@@ -46,6 +46,100 @@
 		let jns = JSON.stringify(json_names)
 		localStorage.setItem('json_names',jns); 
 	}
+	function addname4(){
+		//console.log(json_names)
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); 
+
+		let jns_retrieve = JSON.parse(localStorage.getItem('json_names')); // convert string to json
+		console.log(jns_retrieve);
+	}
+	function addname5(){
+		//console.log(json_names)
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); 
+
+		let jns_retrieve = JSON.parse(localStorage.getItem('json_names')); // convert string to json
+		//console.log(jns_retrieve);
+
+		//console.log(listName[0]);
+		//index element then dot notation for showing individual array in json
+		console.log("name is "+jns_retrieve[0].name);
+	}
+	function addname6(){ // show JSON_NAMES OBJECT VALUES IN TABLE USING CALLING is index
+		//console.log(json_names)
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); 
+
+		let jns_retrieve = JSON.parse(localStorage.getItem('json_names')); // convert string to json
+		//console.log(jns_retrieve);
+
+		//console.log(listName[0]);
+		//index element then dot notation for showing individual array in json
+		//console.log("name is "+jns_retrieve[0].name);
+		let html = `
+				<tr>
+					<td>${jns_retrieve[0].name}</td>
+					<td>${jns_retrieve[0].gender}</td>
+				</tr>
+				<tr>
+					<td>${jns_retrieve[1].name}</td>
+					<td>${jns_retrieve[1].gender}</td>
+				</tr>`;
+				document.querySelector('#tblNames').innerHTML = html;
+
+	}
+	function addname7(){ // show JSON_NAMES OBJECT VALUES IN TABLE USING alternative of loop using es6 way
+
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); 
+
+		let jns_retrieve = JSON.parse(localStorage.getItem('json_names')); // convert string to json
+
+		let html = ``;
+		jns_retrieve.map((name)=>{
+			console.log(name.name)
+			console.log(name.Gender)
+			console.log("-----")
+
+		});
+		document.querySelector('#tblNames').innerHTML = html;
+
+	}
+	function addname8(){ // show JSON_NAMES OBJECT VALUES IN TABLE USING for loop way
+
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); 
+
+		let jns_retrieve = JSON.parse(localStorage.getItem('json_names')); // convert string to json
+
+		let html = ``;
+		for(let i=0;i<jns_retrieve.leghth;i++){
+			console.log(jns_retrieve[i].name)
+			console.log(jns_retrieve[i].Gender)
+			console.log("-----")
+		}
+		document.querySelector('#tblNames').innerHTML = html;
+
+	}
+	function addname9(){ // show JSON_NAMES OBJECT VALUES IN TABLE USING for loop way
+
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); //pase in localstorage
+
+		let jns_retrieve = JSON.parse(localStorage.getItem('json_names')); // convert string to json
+		jns_retrieve.map((name)=>{
+		/*let html += `
+				<tr>
+					<td>${name.name}</td>
+					<td>${name.gender}</td>
+				</tr>
+		`;*/
+
+
+})}
+		function addname10(){
+	}
 	function shownames(){
 		console.log(names);
 	}
@@ -59,7 +153,6 @@
 		localStorage.setItem('names',names); //
 		let IsName = localStorage.getItem('names');
 		let listName = IsName.split(',');
-		console.log(listName[0]);
 	}
 	let json_names = [{ //array of objects !!!!
 		name: "andrew",
@@ -78,6 +171,23 @@
 	<button onclick="shownamejson()">SHOW NAMES ON LOCAL STORAGE AS JSON IN CONSOLE</button>
 	<button onclick="addname2()">SHOW JSON_NAMES ON LOCAL STORAGE AS JSON</button> 
 	<button onclick="addname3()">SHOW JSON_NAMES ON LOCAL STORAGE FROM JSON TO STRING</button> 
+	<button onclick="addname4()">SHOW JSON_NAMES ON LOCAL STORAGE FROM STRING TO JSON</button> 
+	<button onclick="addname5()">SHOW JSON_NAMES OBJECT 1 ON LOCAL STORAGE FROM JSON TO STRING</button> 
+	<button onclick="addname6()">SHOW JSON_NAMES OBJECT VALUES IN TABLE USING ARRAY CALL</button> 
+	<button onclick="addname7()">SHOW JSON_NAMES OBJECT VALUES IN CONSOLES USING ALTERNATIVE OF LOOP</button> 
+	<button onclick="addname8()">SHOW JSON_NAMES OBJECT VALUES IN CONSOLES USING FORLOOP</button> 
+	<button onclick="addname9()">SHOW JSON_NAMES OBJECT VALUES IN CONSOLES USING REPEATING CALL</button> 
 		<h1></h1>
+		<TABLE border ="1">
+			<thead>
+				<tr>
+					<th>Names</th>
+					<th>Gender</th>
+				</tr>
+			</thead>
+			<!-- tbody>tr*2>td*2 -->
+			<tbody id='tblNames' >
+			</tbody>
+		</TABLE>
 </body>
 </html>
