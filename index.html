@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	NAME:
+	<input type="txt" id="txtName">
+	<button onclick="addname1()">ADD TO LOCAL STORAGE</button>
+	
+	<script>
+	function sample(){
+		let msg = "Hello World"
+		console.log(msg);
+		localStorage.setItem(`msg`,`Hello `); //set key and value in application local storage
+		sessionStorage.setItem(`msg`,`World`) //set key and value in application session storage
+		let msg1 = localStorage.getItem(`msg`);//get value 
+		let msg2 = sessionStorage.getItem(`msg`);
+		console.log(msg1+msg2); //concationate and show values in console
+		localStorage.removeItem(`mgs`); //delete value in (key) local storag 
+	}
+	//sample();	 // fuction call
+	function addname(){
+		//var name1 document.getElementByID('txtName');
+		let name = document.querySelector('#txtName').value;
+		console.log(name); //show names in console
+		localStorage.setItem(`name`,name); // add values in local storage in application
+	}
+	let names = ['jules','andrew']; //array of name !!!!!!!!!!!!!!!
+	function addname1(){
+
+		let name = document.querySelector('#txtName').value; //get value of inputed text form input textbox
+		names.push(name); //push name
+		localStorage.setItem('names',names); //
+		}
+
+	function addname2(){//save data in json format
+		//application/localstorage shows datatype = object
+		console.log(json_names)
+		localStorage.setItem('json_names',json_names); 
+	}
+	function addname3(){//save data in json format using jns api !!!!!!!
+		//application/localstorage shows from json to string
+		console.log(json_names)
+		let jns = JSON.stringify(json_names)
+		localStorage.setItem('json_names',jns); 
+	}
+	function shownames(){
+		console.log(names);
+	}
+	function shownamestring(){
+		let IsName = localStorage.getItem('names');
+		console.log(IsName);
+	}
+	function shownamejson(){
+		let name = document.querySelector('#txtName').value; //get value of inputed text form input textbox
+		names.push(name); //push name
+		localStorage.setItem('names',names); //
+		let IsName = localStorage.getItem('names');
+		let listName = IsName.split(',');
+		console.log(listName[0]);
+	}
+	let json_names = [{ //array of objects !!!!
+		name: "andrew",
+		gender: "M"
+
+
+	}, // separator for objects
+	{
+		name: "jules",
+		gender: "M"
+	}];
+	shownames();
+	</script>
+	<button onclick="shownames()">SHOW NAMES ON LOCAL STORAGE AS ARRAY IN CONSOLE</button>
+	<button onclick="shownamestring()">SHOW NAMES ON LOCAL STORAGE AS STRING IN CONSOLE</button>
+	<button onclick="shownamejson()">SHOW NAMES ON LOCAL STORAGE AS JSON IN CONSOLE</button>
+	<button onclick="addname2()">SHOW JSON_NAMES ON LOCAL STORAGE AS JSON</button> 
+	<button onclick="addname3()">SHOW JSON_NAMES ON LOCAL STORAGE FROM JSON TO STRING</button> 
+		<h1></h1>
+</body>
+</html>
